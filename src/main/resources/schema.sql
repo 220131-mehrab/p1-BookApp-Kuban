@@ -8,7 +8,7 @@ CREATE TABLE "library" (
     "Title" VARCHAR NOT NULL,
     "BookId" INT NOT NULL,
     CONSTRAINT "PK_Library" PRIMARY KEY ("LibraryId"),
-    CONSTRAINT "FK_LibraryBookId" FOREIGN KEY ("BookId") REFERENCES "book" ("BookId") ON DELETE NO ACTION ON UPDATE NO ACTION
+    CONSTRAINT "FK_LibraryBookId" FOREIGN KEY ("BookId") REFERENCES "books" ("BookId") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE INDEX "IFK_LibraryBookId" ON "library" ("BookId");

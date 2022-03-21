@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revature.Servlet.BooksServlet;
 import com.revature.Servlet.DefaultServlet;
 import org.apache.catalina.LifecycleException;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 public class AppTest {
 
     @Test
-    public void ServletGetTest() throws LifecycleException {
+    public void ServletGetTest() throws LifecycleException, JsonProcessingException {
         Tomcat server = new Tomcat();
         server.getConnector();
         server.addContext("", null);
@@ -29,7 +30,7 @@ public class AppTest {
         }
 
         server.addServlet("", "defaultServlet", new DefaultServlet()).addMapping("/*");
-        server.addServlet("", "booksServlet", new BooksServlet()).addMapping("/books");
+        server.addServlet("", "booksServlet", new BooksServlet(connection)).addMapping("/books");
 
         try {
             server.start();

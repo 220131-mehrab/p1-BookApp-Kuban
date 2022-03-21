@@ -26,5 +26,9 @@ public class DefaultServlet extends HttpServlet {
         String mimeType = getServletContext().getMimeType(filename);
         resp.setContentType(mimeType);
         IOUtils.copy(file, resp.getOutputStream());
+        //InputStream file = getClass().getClassLoader().getResourceAsStream(resourceDir + filename); //loads src data into backend from static folder
+        //String mimeType = getServletContext().getMimeType(filename); //checks for type of file being imported
+        //resp.setContentType(mimeType);
+        //System.err.println(file);
     }
 }
